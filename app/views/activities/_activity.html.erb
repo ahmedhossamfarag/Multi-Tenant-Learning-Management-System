@@ -1,0 +1,21 @@
+<div id="<%= dom_id activity %>">
+  <p>
+    <strong>Title:</strong>
+    <%= activity.title %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= activity.description %>
+  </p>
+
+  <p>
+    <strong>Event day:</strong>
+    <%= activity.event_day %>
+  </p>
+
+  <div>
+    <%= image_tag activity.image if activity.image.attached? %>
+  </div>
+
+</div>

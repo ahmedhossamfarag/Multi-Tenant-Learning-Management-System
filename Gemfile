@@ -64,10 +64,15 @@ end
 
 gem "devise"
 
-gem "sidekiq"
+gem "delayed_job_active_record"
 
 gem "stripe"
 
 gem "actioncable"
 
 gem "dotenv-rails", group: [:test, :development]
+
+gem "active_storage_validations"
+
+gem "ruby-vips"
+
