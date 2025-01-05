@@ -62,6 +62,8 @@ group :test do
   gem "selenium-webdriver"
 end
 
+gem "pg"
+
 gem "devise"
 
 gem "delayed_job_active_record"

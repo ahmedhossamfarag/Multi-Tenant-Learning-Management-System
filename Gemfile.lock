@@ -114,11 +114,6 @@ GEM
     delayed_job_active_record (4.1.11)
       activerecord (>= 3.0, < 9.0)
       delayed_job (>= 3.0, < 5)
-    delayed_job_web (1.4.4)
-      activerecord (> 3.0.0)
-      delayed_job (> 2.0.3)
-      rack-protection (>= 1.5.5)
-      sinatra (>= 1.4.4)
     devise (4.9.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -181,8 +176,6 @@ GEM
     mini_mime (1.1.5)
     minitest (5.25.4)
     msgpack (1.7.5)
-    mustermann (3.0.3)
-      ruby2_keywords (~> 0.0.1)
     net-imap (0.5.4)
       date
       net-protocol
@@ -208,6 +201,8 @@ GEM
     parser (3.3.6.0)
       ast (~> 2.4.1)
       racc
+    pg (1.5.9)
+    pg (1.5.9-x64-mingw-ucrt)
     propshaft (1.1.0)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
@@ -222,10 +217,6 @@ GEM
     raabro (1.4.0)
     racc (1.8.1)
     rack (3.1.8)
-    rack-protection (4.1.1)
-      base64 (>= 0.1.0)
-      logger (>= 1.6.0)
-      rack (>= 3.0.0, < 4)
     rack-session (2.0.0)
       rack (>= 3.0.0)
     rack-test (2.2.0)
@@ -304,7 +295,6 @@ GEM
     ruby-vips (2.2.2)
       ffi (~> 1.12)
       logger
-    ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     securerandom (0.4.1)
     selenium-webdriver (4.27.0)
@@ -313,13 +303,6 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    sinatra (4.1.1)
-      logger (>= 1.6.0)
-      mustermann (~> 3.0)
-      rack (>= 3.0.0, < 4)
-      rack-protection (= 4.1.1)
-      rack-session (>= 2.0.0, < 3)
-      tilt (~> 2.0)
     solid_cable (3.0.5)
       actioncable (>= 7.2)
       activejob (>= 7.2)
@@ -351,7 +334,6 @@ GEM
     thor (1.3.2)
     thruster (0.1.9)
     thruster (0.1.9-x86_64-linux)
-    tilt (2.5.0)
     timeout (0.4.3)
     turbo-rails (2.0.11)
       actionpack (>= 6.0.0)
@@ -392,12 +374,12 @@ DEPENDENCIES
   capybara
   debug
   delayed_job_active_record
-  delayed_job_web
   devise
   dotenv-rails
   importmap-rails
   jbuilder
   kamal
+  pg
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.1)
