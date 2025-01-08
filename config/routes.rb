@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :chat_rooms
   resources :activities
   devise_for :users, sign_out_via: [ :get ], controllers: {
     registrations: "users/registrations"

@@ -8,6 +8,8 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-User.create(name: "Ahmed Hsamm", email: "ahmed.admin@gmail.com", role: :admin, password: "password", password_confirmation: "password")
+admin = User.create(name: "Ahmed Hsamm", email: "ahmed.admin@gmail.com", role: :admin, password: "password", password_confirmation: "password")
 User.create(name: "Ahmed Hsamm", email: "ahmed.instructor@gmail.com", role: :instructor, password: "password", password_confirmation: "password")
 User.create(name: "Ahmed Hsamm", email: "ahmed.student@gmail.com", role: :student, password: "password", password_confirmation: "password")
+
+ChatRoom.create(user_id: admin.id, title: "test chat room")
