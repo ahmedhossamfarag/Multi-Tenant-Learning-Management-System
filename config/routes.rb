@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get "student_payments/stripe"
+  post "/webhooks/stripe", to: "student_payments#webhooks"
+  get "student_payments/success"
+  get "student_payments/cancel"
+  get "student_payments/", to: "student_payments#index"
+  get "student_payments/:id", to: "student_payments#show"
+  resources :payments
   resources :chat_rooms
   resources :activities
   devise_for :users, sign_out_via: [ :get ], controllers: {

@@ -13,3 +13,5 @@ User.create(name: "Ahmed Hsamm", email: "ahmed.instructor@gmail.com", role: :ins
 User.create(name: "Ahmed Hsamm", email: "ahmed.student@gmail.com", role: :student, password: "password", password_confirmation: "password")
 
 ChatRoom.create(user_id: admin.id, title: "test chat room")
+
+Payment.create(user_id: admin.id, title: "payment test", amount: 100)

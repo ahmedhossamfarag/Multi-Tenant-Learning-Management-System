@@ -27,5 +27,7 @@ module MultiTenantLearningManagementSystem
     config.active_storage.service = :local
 
     config.active_job.queue_adapter = :async
+
+    Stripe.api_key = ENV["STRIPE_SECRET_KEY"]
   end
 end

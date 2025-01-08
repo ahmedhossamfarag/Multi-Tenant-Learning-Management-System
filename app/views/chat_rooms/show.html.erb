@@ -1,0 +1,6 @@
+<p style="color: green"><%= notice %></p>
+<h1><%= @chat_room.title %></h1>
+
+<script type="module">
+  <%= render template: "chat_rooms/show", formats: [:js] %>
+</script>
