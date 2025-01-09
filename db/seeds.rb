@@ -8,10 +8,9 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-admin = User.create(name: "Ahmed Hsamm", email: "ahmed.admin@gmail.com", role: :admin, password: "password", password_confirmation: "password")
-User.create(name: "Ahmed Hsamm", email: "ahmed.instructor@gmail.com", role: :instructor, password: "password", password_confirmation: "password")
-User.create(name: "Ahmed Hsamm", email: "ahmed.student@gmail.com", role: :student, password: "password", password_confirmation: "password")
-
-ChatRoom.create(user_id: admin.id, title: "test chat room")
-
-Payment.create(user_id: admin.id, title: "payment test", amount: 100)
+Schema.public
+User.create(name: "public admin", email: "ahmed.admin@gmail.com", role: :admin, password: "password", password_confirmation: "password")
+Schema.open "guc"
+User.create(name: "guc admin", email: "ahmed.admin@gmail.com", role: :admin, password: "password", password_confirmation: "password")
+Schema.open "giu"
+User.create(name: "giu admin", email: "ahmed.admin@gmail.com", role: :admin, password: "password", password_confirmation: "password")

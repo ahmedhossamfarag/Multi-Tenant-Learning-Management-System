@@ -13,7 +13,18 @@ class SubdomainMiddleware
     # Set the subdomain in the request environment for later use
     env["subdomain"] = subdomain
 
-    @app.call(env)
+    begin
+      if Schema.exists? subdomain
+        Schema.open subdomain
+      else
+        Schema.public
+      end
+
+      @app.call(env)
+
+    rescue ArgumentError
+      [ 400, { "Content-Type" => "text/plain" }, [ "Bad Request" ] ]
+    end
   end
 
 end

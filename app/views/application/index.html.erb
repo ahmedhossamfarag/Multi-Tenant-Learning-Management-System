@@ -1,2 +1,5 @@
 <h1>Application</h1>
 <h2><%= request.env["subdomain"] %></h2>
+<div>
+  <%= User.all.to_json %>
+</div>

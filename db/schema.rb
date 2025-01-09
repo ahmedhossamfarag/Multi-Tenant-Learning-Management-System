@@ -11,6 +11,12 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[8.0].define(version: 2025_01_08_202056) do
+  schema_name = "giu"
+
+  create_schema schema_name
+
+  execute "SET search_path TO #{schema_name}"
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
