@@ -1,0 +1,11 @@
+<% content_for :title, "New course content" %>
+
+<h1>New course content</h1>
+
+<%= render "form", course_content: @course_content %>
+
+<br>
+
+<div>
+  <%= link_to "Back to course contents", course_contents_path %>
+</div>

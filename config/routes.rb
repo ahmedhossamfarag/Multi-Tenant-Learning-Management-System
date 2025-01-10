@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :course_contents
+  resources :courses
   get "student_payments/stripe"
   post "/webhooks/stripe", to: "student_payments#webhooks"
   get "student_payments/success"

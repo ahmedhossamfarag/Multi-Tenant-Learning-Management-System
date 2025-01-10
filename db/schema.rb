@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_08_202056) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_10_160255) do
   schema_name = "giu"
 
-  create_schema schema_name
+  create_schema schema_name, if_not_exists: true
 
   execute "SET search_path TO #{schema_name}"
 
@@ -63,6 +63,29 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_08_202056) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "course_contents", force: :cascade do |t|
+    t.integer "course_id"
+    t.string "title"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.integer "instructor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "enrollments", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "payments", force: :cascade do |t|
     t.integer "user_id"
     t.string "title"
@@ -90,5 +113,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_08_202056) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "chat_rooms", "users"
+  add_foreign_key "course_contents", "courses"
+  add_foreign_key "courses", "users", column: "instructor_id"
+  add_foreign_key "enrollments", "courses"
+  add_foreign_key "enrollments", "users", column: "student_id"
   add_foreign_key "payments", "users"
 end
