@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get "instructor_courses/index"
+  get "instructor_courses/show"
+  get "student_courses/index"
+  get "student_courses/show"
   resources :course_contents
   resources :courses
   get "student_payments/stripe"
