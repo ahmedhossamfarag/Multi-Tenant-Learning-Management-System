@@ -1,7 +1,10 @@
 class StudentPaymentsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :authorize_student
   before_action :set_payment, only: [ :show, :stripe ]
 
   def index
+    @payments = Payment.where(user_id: current_user.id)
   end
 
   def show
@@ -19,7 +22,7 @@ class StudentPaymentsController < ApplicationController
   def webhooks
     if (session_id = stripe_webhooks)
       if (payment = Payment.find_by(stripe_session_id: session_id))
-        payment.update(completed: true)
+        payment.update(completed: true, stripe_session_id: nil)
       end
     end
   end
@@ -32,8 +35,12 @@ class StudentPaymentsController < ApplicationController
 
   private
   def set_payment
-    @payment = Payment.find(params.expect(:id))
+    @payment = Payment.find_by(id: params.expect(:id), user_id: current_user.id)
+    unless @payment
+      redirect_to action: :index
+    end
   end
 
   include StudentPaymentsHelper
+  include Authorization
 end

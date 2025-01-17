@@ -1,4 +1,6 @@
 class CoursesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :authorize_admin
   before_action :set_course, only: %i[ show edit update destroy ]
 
   # GET /courses or /courses.json
@@ -67,4 +69,6 @@ class CoursesController < ApplicationController
     def course_params
       params.expect(course: [ :title, :description, :instructor_id ])
     end
+
+  include Authorization
 end

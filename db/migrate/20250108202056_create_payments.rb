@@ -5,7 +5,7 @@ class CreatePayments < ActiveRecord::Migration[8.0]
       t.string :title
       t.float :amount
       t.string :stripe_session_id
-      t.boolean :completed , default: false
+      t.boolean :completed, default: false
 
       t.timestamps
     end

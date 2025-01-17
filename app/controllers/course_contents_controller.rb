@@ -1,9 +1,12 @@
 class CourseContentsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :authorize_instructor
+  before_action :set_course
   before_action :set_course_content, only: %i[ show edit update destroy ]
 
   # GET /course_contents or /course_contents.json
   def index
-    @course_contents = CourseContent.all
+    @course_contents = CourseContent.where(course_id: @course.id)
   end
 
   # GET /course_contents/1 or /course_contents/1.json
@@ -59,12 +62,24 @@ class CourseContentsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
+    def set_course
+      @course = Course.find_by(id: params.expect!(:course_id), instructor_id: current_user.id)
+      unless @course
+        head :not_found
+      end
+    end
     def set_course_content
-      @course_content = CourseContent.find(params.expect(:id))
+      @course_content = CourseContent.find_by(id: params.expect(:id), course_id: @course.id)
+      unless @course_content
+        head :not_found
+      end
     end
 
     # Only allow a list of trusted parameters through.
     def course_content_params
       params.expect(course_content: [ :course_id, :title, :description ])
     end
+
+  include Authorization
 end

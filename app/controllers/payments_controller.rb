@@ -1,4 +1,6 @@
 class PaymentsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :authorize_instructor
   before_action :set_payment, only: %i[ show edit update destroy ]
 
   # GET /payments or /payments.json
@@ -67,4 +69,6 @@ class PaymentsController < ApplicationController
     def payment_params
       params.expect(payment: [ :user_id, :title, :amount, :stripe_session_id, :completed ])
     end
+
+  include Authorization
 end

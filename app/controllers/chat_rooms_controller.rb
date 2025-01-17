@@ -1,5 +1,8 @@
 class ChatRoomsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :authorize_student
   before_action :set_chat_room, only: %i[ show edit update destroy ]
+  before_action :check_user_access, only: %i[ edit update destroy ]
 
   # GET /chat_rooms or /chat_rooms.json
   def index
@@ -49,6 +52,7 @@ class ChatRoomsController < ApplicationController
 
   # DELETE /chat_rooms/1 or /chat_rooms/1.json
   def destroy
+
     @chat_room.destroy!
 
     respond_to do |format|
@@ -63,8 +67,16 @@ class ChatRoomsController < ApplicationController
       @chat_room = ChatRoom.find(params.expect(:id))
     end
 
+    def check_user_access
+      unless @chat_room.user_id == current_user.id
+        head :not_found
+      end
+    end
+
     # Only allow a list of trusted parameters through.
     def chat_room_params
       params.expect(chat_room: [ :user_id, :title ])
     end
+
+  include Authorization
 end

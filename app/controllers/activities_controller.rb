@@ -1,4 +1,6 @@
 class ActivitiesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :authorize_admin
   before_action :set_activity, only: %i[ show edit update destroy ]
 
   # GET /activities or /activities.json
@@ -68,4 +70,6 @@ class ActivitiesController < ApplicationController
     def activity_params
       params.expect(activity: [ :title, :description, :event_day, :image ])
     end
+
+  include Authorization
 end
