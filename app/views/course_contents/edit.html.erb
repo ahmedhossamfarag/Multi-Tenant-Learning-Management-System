@@ -2,11 +2,12 @@
 
 <h1>Editing course content</h1>
 
-<%= render "form", course_content: @course_content %>
+<%= render "form", course_content: @course_content, form_url: course_course_content_path, form_method: :patch %>
 
+<br>
 <br>
 
 <div>
-  <%= link_to "Show this course content", @course_content %> |
-  <%= link_to "Back to course contents", course_contents_path %>
+  <%= link_to "Show this course content", course_course_content_path(course_id: @course.id, id: @course_content.id) %> |
+  <%= link_to "Back to course contents", course_course_contents_path(course_id: @course.id) %>
 </div>

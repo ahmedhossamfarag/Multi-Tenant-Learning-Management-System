@@ -1,2 +1,17 @@
-<h1>StudentCourses#show</h1>
-<p>Find me in app/views/student_courses/show.html.erb</p>
+<h1><%= @course.title %></h1>
+<h5>By: <%= @instructor.name %></h5>
+<p><%= @course.description %></p>
+<br />
+<br />
+<h3>Content</h3>
+<div class="list-group">
+  <% @contents.each do |c| %>
+    <div class="list-group-item">
+      <h4 class="list-group-item-heading"><%= c.title %></h4>
+      <p class="list-group-item-text"><%= c.description %></p>
+      <a href="<%= c.file %>">
+        <button class="btn btn-info">Download</button>
+      </a>
+    </div>
+  <% end %>
+</div>

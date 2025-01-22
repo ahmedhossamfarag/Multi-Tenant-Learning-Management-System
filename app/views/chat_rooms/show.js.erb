@@ -3,14 +3,21 @@ import consumer from "channels/consumer"
 
 const room = <%= @chat_room.id %>
 
-const chatChannel = consumer.subscriptions.create({ channel: "ChatChannel", room: room }, {
-    connected(){
-        console.log("connected")
-    },
-    received(data) {
-        // data => { sent_by: "Paul", body: "This is a cool chat app." }
-        console.log(data)
+const app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.messages = []
+    $scope.new_message = ""
+    const chatChannel = consumer.subscriptions.create({ channel: "ChatChannel", room: room }, {
+        connected(){
+        },
+        received(data) {
+            $scope.$apply(function (){
+                $scope.messages.push(data.body)
+            })
+        }
+    })
+    $scope.send_message = function (){
+        chatChannel.send({ sent_by: "Paul", body: $scope.new_message })
+        $scope.new_message = ""
     }
-})
-
-setTimeout(function (){chatChannel.send({ sent_by: "Paul", body: "This is a cool chat app." })}, 1000)
+});

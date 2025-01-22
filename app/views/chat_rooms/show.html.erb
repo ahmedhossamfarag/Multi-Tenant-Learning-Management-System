@@ -1,5 +1,28 @@
-<p style="color: green"><%= notice %></p>
-<h1><%= @chat_room.title %></h1>
+<div style="min-height: 90vh; display: flex; flex-direction: column">
+  <p style="color: green"><%= notice %></p>
+  <h1><%= @chat_room.title %></h1>
+  <div ng-app="myApp" ng-controller="myCtrl" style="display: flex; flex-direction: column; flex-grow: 1">
+    <div style="flex-grow: 1">
+      <div class="list-group">
+        <div ng-repeat="m in messages" class="list-group-item">
+          {{ m }}
+        </div>
+      </div>
+    </div>
+    <footer>
+      <form>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="New message" ng-model="new_message">
+          <div class="input-group-btn">
+            <button class="btn btn-default" ng-click="send_message()">
+              <i class="glyphicon glyphicon-send"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </footer>
+  </div>
+</div>
 
 <script type="module">
   <%= render template: "chat_rooms/show", formats: [:js] %>

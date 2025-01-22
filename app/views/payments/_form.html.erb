@@ -11,32 +11,22 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.number_field :user_id %>
+  <div class="form-group">
+    <%= form.label :user_id, "Student", style: "display: block" %>
+    <%= form.select :user_id, @students.collect { |s| [s.name, s.id] }, {}, class: "form-control" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: "form-control" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :amount, style: "display: block" %>
-    <%= form.number_field :amount %>
+    <%= form.number_field :amount, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :stripe_session_id, style: "display: block" %>
-    <%= form.text_field :stripe_session_id %>
-  </div>
-
-  <div>
-    <%= form.label :completed, style: "display: block" %>
-    <%= form.checkbox :completed %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>

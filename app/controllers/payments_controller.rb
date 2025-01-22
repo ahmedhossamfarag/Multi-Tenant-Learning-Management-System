@@ -5,20 +5,23 @@ class PaymentsController < ApplicationController
 
   # GET /payments or /payments.json
   def index
-    @payments = Payment.all
+    @payments = Payment.joins(:user).select("payments.*, users.name as user_name")
   end
 
   # GET /payments/1 or /payments/1.json
   def show
+    @student = @payment.user
   end
 
   # GET /payments/new
   def new
     @payment = Payment.new
+    @students = User.where(role: :student)
   end
 
   # GET /payments/1/edit
   def edit
+    @students = User.where(role: :student)
   end
 
   # POST /payments or /payments.json

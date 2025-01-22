@@ -1,5 +1,25 @@
-<h1>Application</h1>
-<h2><%= request.env["subdomain"] %></h2>
-<div>
-  <%= User.all.to_json %>
-</div>
+<h1>Welcome @ <%= request.env["subdomain"].upcase %></h1>
+<br>
+<br>
+<br>
+<% if current_user %>
+  <%= link_to "Profile", edit_user_registration_path %><br>
+
+  <% if current_user.admin? %>
+    <%= link_to "Activities", activities_path %><br>
+    <%= link_to "Courses", courses_path %><br>
+  <% end %>
+  <% if current_user.instructor? %>
+    <%= link_to "Courses", instructor_courses_path %><br>
+    <%= link_to "Payments", payments_path %><br>
+  <% end %>
+  <% if current_user.student? %>
+    <%= link_to "Courses", student_courses_path %><br>
+    <%= link_to "Payments", student_payments_path %><br>
+    <%= link_to "Chat Rooms", chat_rooms_path %><br>
+  <% end %>
+
+  <%= link_to "Logout", destroy_user_session_path %>
+<% else %>
+  <%= link_to "Login", new_user_session_url %><br>
+<% end %>

@@ -41,6 +41,9 @@ class ActivitiesController < ApplicationController
   def update
     respond_to do |format|
       if @activity.update(activity_params)
+        if activity_params[:image]
+          FileUploadJob.perform_later(@activity.id)
+        end
         format.html { redirect_to @activity, notice: "Activity was successfully updated." }
         format.json { render :show, status: :ok, location: @activity }
       else

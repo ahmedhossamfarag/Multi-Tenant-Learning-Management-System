@@ -4,13 +4,14 @@
 
 <h1>Courses</h1>
 
-<div id="courses">
+<div id="courses" class="list-group">
   <% @courses.each do |course| %>
-    <%= render course %>
-    <p>
-      <%= link_to "Show this course", course %>
-    </p>
+    <a href="<%= url_for course %>" class="list-group-item">
+      <h4 class="list-group-item-heading"><%= course.title %></h4>
+      <p class="list-group-item-text"><%= course.description %></p>
+    </a>
   <% end %>
 </div>
-
+<br>
+<br>
 <%= link_to "New course", new_course_path %>

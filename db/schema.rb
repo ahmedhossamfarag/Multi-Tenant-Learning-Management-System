@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[8.0].define(version: 2025_01_10_160255) do
+  # schema_name = "guc"
   schema_name = "giu"
 
   create_schema schema_name, if_not_exists: true

@@ -4,13 +4,13 @@
 
 <h1>Course contents</h1>
 
-<div id="course_contents">
+<div id="course_contents" class="list-group">
   <% @course_contents.each do |course_content| %>
-    <%= render course_content %>
-    <p>
-      <%= link_to "Show this course content", course_content %>
-    </p>
+    <a href="<%= course_course_content_path(course_id: @course.id, id: course_content.id) %>" class="list-group-item">
+      <h4 class="list-group-item-heading"><%= course_content.title %></h4>
+      <p class="list-group-item-text"><%= course_content.description %></p>
+    </a>
   <% end %>
 </div>
 
-<%= link_to "New course content", new_course_content_path %>
+<%= link_to "New course content", new_course_course_content_path(course_id: @course.id) %>

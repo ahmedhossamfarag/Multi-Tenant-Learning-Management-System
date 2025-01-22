@@ -28,7 +28,7 @@ class CourseContentsController < ApplicationController
 
     respond_to do |format|
       if @course_content.save
-        format.html { redirect_to @course_content, notice: "Course content was successfully created." }
+        format.html { redirect_to course_course_content_path(course_id: @course.id, id: @course_content.id), notice: "Course content was successfully created." }
         format.json { render :show, status: :created, location: @course_content }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -41,7 +41,7 @@ class CourseContentsController < ApplicationController
   def update
     respond_to do |format|
       if @course_content.update(course_content_params)
-        format.html { redirect_to @course_content, notice: "Course content was successfully updated." }
+        format.html { redirect_to course_course_content_path(course_id: @course.id, id: @course_content.id), notice: "Course content was successfully updated." }
         format.json { render :show, status: :ok, location: @course_content }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -55,7 +55,7 @@ class CourseContentsController < ApplicationController
     @course_content.destroy!
 
     respond_to do |format|
-      format.html { redirect_to course_contents_path, status: :see_other, notice: "Course content was successfully destroyed." }
+      format.html { redirect_to course_course_contents_path(course_id: @course.id), status: :see_other, notice: "Course content was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -78,7 +78,7 @@ class CourseContentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def course_content_params
-      params.expect(course_content: [ :course_id, :title, :description ])
+      params.expect(course_content: [ :course_id, :title, :description, :file ])
     end
 
   include Authorization

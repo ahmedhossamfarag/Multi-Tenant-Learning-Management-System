@@ -1,10 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @course_content %>
-
+<br>
+<br>
 <div>
-  <%= link_to "Edit this course content", edit_course_content_path(@course_content) %> |
-  <%= link_to "Back to course contents", course_contents_path %>
+  <%= link_to "Edit this course content", edit_course_course_content_path(course_id: @course.id, id: @course_content.id) %> |
+  <%= link_to "Back to course contents", course_course_contents_path(course_id: @course.id) %>
 
-  <%= button_to "Destroy this course content", @course_content, method: :delete %>
+  <%= button_to "Destroy this course content", course_course_content_path(course_id: @course.id, id: @course_content.id), method: :delete, class: "btn btn-danger" %>
 </div>

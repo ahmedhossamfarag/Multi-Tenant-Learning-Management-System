@@ -1,18 +1,19 @@
 Rails.application.routes.draw do
-  get "instructor/courses/index", to: "instructor_courses#index"
-  get "instructor/courses/show", to: "instructor_courses#show"
-  get "student/courses/index", to: "student_courses#index"
-  get "student/courses/show", to: "student_courses#show"
+  get "instructor/courses/", to: "instructor_courses#index"
+  get "instructor/courses/:id", to: "instructor_courses#show", as: "instructor_course"
+  get "student/courses/", to: "student_courses#index"
+  get "student/courses/:id", to: "student_courses#show", as: "student_course"
   resources :courses do
     resources :course_contents
+    resources :enrollments, only: [:index, :create, :destroy]
   end
   resources :courses
-  get "student/payments/stripe"
+  get "student/payments/stripe", to: "student_payments#stripe"
   post "/webhooks/stripe", to: "student_payments#webhooks"
-  get "student/payments/success"
-  get "student/payments/cancel"
+  get "student/payments/success", to: "student_payments#success"
+  get "student/payments/cancel", to: "student_payments#cancel"
   get "student/payments/", to: "student_payments#index"
-  get "student/payments/:id", to: "student_payments#show"
+  get "student/payments/:id", to: "student_payments#show", as: "student_payment"
   resources :payments
   resources :chat_rooms
   resources :activities

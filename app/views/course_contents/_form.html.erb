@@ -1,4 +1,4 @@
-<%= form_with(model: course_content) do |form| %>
+<%= form_with(model: course_content, url: form_url, method: form_method) do |form| %>
   <% if course_content.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(course_content.errors.count, "error") %> prohibited this course_content from being saved:</h2>
@@ -12,21 +12,26 @@
   <% end %>
 
   <div>
-    <%= form.label :course_id, style: "display: block" %>
-    <%= form.number_field :course_id %>
+    <%= hidden_field :course_content, :course_id, value: @course.id %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: "form-control" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
+    <%= form.textarea :description, class: "form-control" %>
   </div>
 
+  <div class="form-group">
+    <%= form.label :file, style: "display: block" %>
+    <%= form.file_field :file, class: "form-control" %>
+  </div>
+
+
   <div>
-    <%= form.submit %>
+    <%= form.submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>

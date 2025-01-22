@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Amount</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @payments.to_ary.each_index do |i| %>
+        <tr>
+          <td><%= i %></td>
+          <td><%= link_to @payments[i].title, student_payment_path(@payments[i]) %></td>
+          <td><%= @payments[i].amount %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

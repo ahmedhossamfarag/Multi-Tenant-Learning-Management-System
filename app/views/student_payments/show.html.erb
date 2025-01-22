@@ -1,6 +1,6 @@
-<h1>StudentPayments</h1>
+<h1>Payment Details</h1>
 <p><%= @payment.title %></p>
-<p><%= @payment.amount %></p>
+<p>Amount: <%= @payment.amount %> </p>
 <br />
 <br />
 <%= link_to "Pay", controller: :student_payments, action: :stripe, id: @payment.id %>

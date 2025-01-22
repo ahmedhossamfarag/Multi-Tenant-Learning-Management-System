@@ -1,4 +1,6 @@
 class CourseContent < ApplicationRecord
+  belongs_to :course
+
   validates :course_id, presence: true
   validates :title, presence: true, uniqueness: { scope: :course_id }
 

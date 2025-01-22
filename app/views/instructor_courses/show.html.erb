@@ -1,2 +1,10 @@
-<h1>InstructorCourses#show</h1>
-<p>Find me in app/views/instructor_courses/show.html.erb</p>
+<h1><%= @course.title %></h1>
+<p><%= @course.description %></p>
+<br />
+<br />
+<%= link_to "contents", course_course_contents_path(course_id: @course.id) %>
+<br>
+<br>
+<%= link_to "enrollments", course_enrollments_path(course_id: @course.id) %>
+<br>
+<br>

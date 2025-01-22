@@ -1,7 +1,7 @@
 <div id="<%= dom_id course_content %>">
   <p>
     <strong>Course:</strong>
-    <%= course_content.course_id %>
+    <%= @course.title %>
   </p>
 
   <p>
@@ -12,6 +12,11 @@
   <p>
     <strong>Description:</strong>
     <%= course_content.description %>
+  </p>
+
+  <p>
+    <strong>Content:</strong>
+    <%= link_to "View",course_content.file %>
   </p>
 
 </div>

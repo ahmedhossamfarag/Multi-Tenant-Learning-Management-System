@@ -1,7 +1,7 @@
 <div id="<%= dom_id payment %>">
   <p>
     <strong>User:</strong>
-    <%= payment.user_id %>
+    <%= @student.name %>
   </p>
 
   <p>
@@ -12,11 +12,6 @@
   <p>
     <strong>Amount:</strong>
     <%= payment.amount %>
-  </p>
-
-  <p>
-    <strong>Stripe session:</strong>
-    <%= payment.stripe_session_id %>
   </p>
 
   <p>

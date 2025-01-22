@@ -4,7 +4,7 @@ class StudentPaymentsController < ApplicationController
   before_action :set_payment, only: [ :show, :stripe ]
 
   def index
-    @payments = Payment.where(user_id: current_user.id)
+    @payments = current_user.payments
   end
 
   def show

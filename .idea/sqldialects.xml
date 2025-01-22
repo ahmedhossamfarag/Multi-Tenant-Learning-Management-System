@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/app/controllers/enrollments_controller.rb" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/app/controllers/payments_controller.rb" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/app/controllers/student_courses_controller.rb" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/app/helpers/schema.rb" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/db/schema.rb" dialect="GenericSQL" />
   </component>

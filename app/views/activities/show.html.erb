@@ -1,10 +1,12 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @activity %>
-
 <div>
-  <%= link_to "Edit this activity", edit_activity_path(@activity) %> |
-  <%= link_to "Back to activities", activities_path %>
+  <p style="color: green"><%= notice %></p>
 
-  <%= button_to "Destroy this activity", @activity, method: :delete %>
+  <%= render @activity %>
+
+  <div style="display: inline-flex; align-items: center">
+    <%= link_to "Edit this activity", edit_activity_path(@activity) %> |
+    <%= link_to "Back to activities", activities_path %>|
+
+    <%= button_to "Destroy this activity", @activity, method: :delete, class: "btn btn-danger" %>
+  </div>
 </div>

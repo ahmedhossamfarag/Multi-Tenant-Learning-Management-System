@@ -11,27 +11,27 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="form-group">
     <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: "form-control" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
+    <%= form.textarea :description, class: "form-control" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :event_day, style: "display: block" %>
-    <%= form.date_field :event_day %>
+    <%= form.date_field :event_day, class: "form-control" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :image, style: "display:block" %>
-    <%= form.file_field :image, accept: "image/*" %>
+    <%= form.file_field :image, accept: "image/*", class: "form-control" %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>

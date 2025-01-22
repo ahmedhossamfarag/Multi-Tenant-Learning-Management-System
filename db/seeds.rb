@@ -8,9 +8,16 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-Schema.public
-User.create(name: "public admin", email: "ahmed.admin@gmail.com", role: :admin, password: "password", password_confirmation: "password")
-Schema.open "guc"
-User.create(name: "guc admin", email: "ahmed.admin@gmail.com", role: :admin, password: "password", password_confirmation: "password")
-Schema.open "giu"
-User.create(name: "giu admin", email: "ahmed.admin@gmail.com", role: :admin, password: "password", password_confirmation: "password")
+# Schema.public
+# User.create(name: "public admin", email: "ahmed.admin@gmail.com", role: :admin, password: "password", password_confirmation: "password")
+# Schema.open "guc"
+# User.create(name: "guc admin", email: "ahmed.admin@gmail.com", role: :admin, password: "password", password_confirmation: "password")
+# Schema.open "giu"
+# User.create(name: "giu admin", email: "ahmed.admin@gmail.com", role: :admin, password: "password", password_confirmation: "password")
+
+%w[public guc giu].each do |host|
+  Schema.open host
+  %i[admin instructor student].each do |role|
+    User.create(name: "#{host} #{role.name}", email: "ahmed.#{role.name}@gmail.com", role: role, password: "password", password_confirmation: "password")
+  end
+end

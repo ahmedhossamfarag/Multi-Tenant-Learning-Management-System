@@ -3,14 +3,15 @@ class StudentCoursesController < ApplicationController
   before_action :authorize_student
 
   def index
-    @courses = Course.joins(:enrollments).where(enrollments: { student_id: current_user.id })
+    @courses = current_user.enrollments.joins(:course).select("courses.*")
   end
 
   def show
     enrollment = Enrollment.find_by(course_id: params.expect!(:id), student_id: current_user.id)
     if enrollment
-      @course = Course.find(enrollment.course_id)
-      @contents = CourseContent.where(course_id: enrollment.course_id)
+      @course = enrollment.course
+      @instructor = @course.instructor
+      @contents = @course.course_contents
     else
       head :not_found
     end

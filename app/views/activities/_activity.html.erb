@@ -1,21 +1,21 @@
-<div id="<%= dom_id activity %>">
-  <p>
-    <strong>Title:</strong>
-    <%= activity.title %>
-  </p>
+<div id="<%= dom_id activity %>" class="row">
+  <div class="col-sm-8">
+    <h3><%= activity.title %></h3>
 
-  <p>
-    <strong>Description:</strong>
-    <%= activity.description %>
-  </p>
+    <p>
+      <%= activity.description %>
+    </p>
 
-  <p>
-    <strong>Event day:</strong>
-    <%= activity.event_day %>
-  </p>
+    <p>
+      <strong>Event day:</strong>
+      <%= activity.event_day %>
+    </p>
+  </div>
 
-  <div>
-    <%= image_tag activity.image if activity.image.attached? %>
+  <div class="col-sm-4 text-center">
+    <div>
+      <%= image_tag activity.image if activity.image.attached? %>
+    </div>
   </div>
 
 </div>

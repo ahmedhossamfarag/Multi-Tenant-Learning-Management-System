@@ -16,16 +16,7 @@ class User < ApplicationRecord
     errors.add(:name, "does not match Regex") unless name.strip =~ /\A([a-z]{3,})(\s+[a-z]{3,})*\Z/i
   end
 
-  def is_admin?
-    role == :admin
-  end
-
-  def is_instructor?
-    role == :instructor
-  end
-
-  def is_student?
-    role == :student
-  end
-
+  has_many :courses, foreign_key: :instructor_id
+  has_many :enrollments, foreign_key: :student_id
+  has_many :payments
 end

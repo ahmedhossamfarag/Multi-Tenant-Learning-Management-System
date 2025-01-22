@@ -10,15 +10,18 @@ class CoursesController < ApplicationController
 
   # GET /courses/1 or /courses/1.json
   def show
+    @instructor = @course.instructor
   end
 
   # GET /courses/new
   def new
     @course = Course.new
+    @instructors = User.where(role: :instructor)
   end
 
   # GET /courses/1/edit
   def edit
+    @instructors = User.where(role: :instructor)
   end
 
   # POST /courses or /courses.json
