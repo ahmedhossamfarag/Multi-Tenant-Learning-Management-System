@@ -1,24 +1,31 @@
-# README
+# Multi-Tanent Learning Management System
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A full-featured LMS where instructors create courses and students enroll, supporting schema-based multi-tenancy,
+Stripe Payments, Real-Time Chat, and background job processing.
 
-Things you may want to cover:
+The project is built on top of Ruby on Rails and PostgreSQL.
 
-* Ruby version
+## Features
 
-* System dependencies
+- Schema-based multi-tenancy
+- Stripe Payments
+- Real-Time Chat between students
+- Background job processing for image processing using Sidekiq
 
-* Configuration
+## Rules
 
-* Database creation
+### Admin
+- Can add activities (title, description, event_day, image)
 
-* Database initialization
+### Instructor
+- Can add courses (title, description, instructor)
+- Can add course contents (course, title, description)
+- Can add enrollments (course, student)
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Student
+- Can view courses
+- Can view course contents
+- Can view activities
+- Can enroll in courses
+- Can pay for courses
+- Can chat with other students
