@@ -12,7 +12,7 @@ The project is built on top of Ruby on Rails and PostgreSQL.
 - Real-Time Chat between students
 - Background job processing for image processing using Sidekiq
 
-## Rules
+## Roles
 
 ### Admin
 - Can add activities (title, description, event_day, image)
