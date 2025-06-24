@@ -1,31 +1,55 @@
-# Multi-Tanent Learning Management System
+# Multi-Tenant Learning Management System
 
-A full-featured LMS where instructors create courses and students enroll, supporting schema-based multi-tenancy,
-Stripe Payments, Real-Time Chat, and background job processing.
+A full-featured Learning Management System (LMS) that supports multiple tenants using schema-based isolation.  
+Instructors can create and manage courses, students can enroll and interact in real time, and admins can manage activities.  
+The system integrates with Stripe for payments and uses Sidekiq for background job processing.
 
-The project is built on top of Ruby on Rails and PostgreSQL.
+Built with **Ruby on Rails** and **PostgreSQL**.
 
-## Features
+---
 
-- Schema-based multi-tenancy
-- Stripe Payments
-- Real-Time Chat between students
-- Background job processing for image processing using Sidekiq
+## 🔧 Key Features
 
-## Roles
+- **Schema-Based Multi-Tenancy**  
+  Isolates each tenant's data securely using PostgreSQL schemas.
 
-### Admin
-- Can add activities (title, description, event_day, image)
+- **Stripe Integration**  
+  Online payments management.
 
-### Instructor
-- Can add courses (title, description, instructor)
-- Can add course contents (course, title, description)
-- Can add enrollments (course, student)
+- **Real-Time Chat**  
+  Enables communication between students using Action Cable or a WebSocket implementation.
 
-### Student
-- Can view courses
-- Can view course contents
-- Can view activities
-- Can enroll in courses
-- Can pay for courses
-- Can chat with other students
+- **Background Processing**  
+  Handles tasks like image uploads and processing via **Sidekiq**.
+
+---
+
+## 👥 Roles & Capabilities
+
+### 🛠 Admin
+- Manage platform-wide activities:
+  - Title
+  - Description
+  - Event day
+  - Image
+
+### 🎓 Instructor
+- Create and manage:
+  - Courses (title, description)
+  - Course content (associated with courses)
+  - Enrollments (assign students to courses)
+
+### 👩‍🎓 Student *(implicitly supported)*
+- Enroll in available courses
+- Participate in real-time chats
+- Access course content
+- View activities
+---
+
+## 📚 Tech Stack
+
+- Ruby on Rails
+- PostgreSQL (multi-schema setup)
+- Stripe API
+- Sidekiq
+- Action Cable (for real-time chat)
